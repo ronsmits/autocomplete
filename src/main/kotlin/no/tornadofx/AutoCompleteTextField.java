@@ -4,17 +4,15 @@ package no.tornadofx;
  * Created by ronsmits on 26/01/2017.
  */
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.function.Function;
+
 import javafx.geometry.Side;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.CustomMenuItem;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-
-import java.util.LinkedList;
-import java.util.List;
-import java.util.function.Function;
 
 /**
  * This class is a TextField which implements an "autocomplete" functionality, Based on a {@link Function} to provide
@@ -73,12 +71,10 @@ public class AutoCompleteTextField extends TextField {
             final String result = searchResult.get(i);
             Label entryLabel = new Label(result);
             CustomMenuItem item = new CustomMenuItem(entryLabel, true);
-            item.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent actionEvent) {
-                    setText(result);
-                    entriesPopup.hide();
-                }
+            item.setOnAction(actionEvent ->
+            {
+                setText(result);
+                entriesPopup.hide();
             });
             menuItems.add(item);
         }

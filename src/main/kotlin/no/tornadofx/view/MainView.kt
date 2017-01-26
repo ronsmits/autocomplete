@@ -14,7 +14,7 @@ class MainView : View("Hello TornadoFX Application") {
         add(AutoCompleteTextField {enteredText->
             controller.array
                     .map { it as JsonObject }
-                    .filter { x -> x.getString("name").startsWith(enteredText, true) }
+                    .filter { listEntry -> listEntry.getString("name").startsWith(enteredText, true) }
                     .map { it.getString("name") }
         })
     }
