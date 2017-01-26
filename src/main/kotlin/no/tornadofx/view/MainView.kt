@@ -9,5 +9,6 @@ class MainView : View("Hello TornadoFX Application") {
             addClass(heading)
         }
         add(AutoCompleteTextField { listOf("AA", "bb", "cc") })
+        textfield {  }
     }
 }
